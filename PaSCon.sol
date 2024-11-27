@@ -59,7 +59,6 @@ contract PatientContract{
 
     uint record_counter = 0;
 
-    // DataStorage Function
     function data_storage(
             address patient_add, 
             string memory edata,
@@ -93,7 +92,6 @@ contract PatientContract{
 
     GrantHistory[] grant_list;
 
-    // TransferHistory Function
     function transfer_history(
             address requester, 
             address granter, 
@@ -185,7 +183,6 @@ contract AssistanceContract {
 
     uint request_counter = 0;
 
-    // AddRequest Function
     function add_request(address addr, uint rec_num) public returns(bool){
 
         Request memory req;
@@ -199,7 +196,6 @@ contract AssistanceContract {
         return true;
     }
 
-    // RequestAccess Function
     function request_access(address addr, uint rec_num) public only_owner {
         AssistanceContract ac = AssistanceContract(addr);
         ac.add_request(msg.sender, rec_num);
@@ -220,7 +216,6 @@ contract AssistanceContract {
         return (granted_keys);
     }
 
-    // KeyTransfer Function
     function key_transfer(
         address granter, 
         string memory ciphertext, 
@@ -249,7 +244,6 @@ contract AssistanceContract {
         return false;
     }
 
-    // GrantAccess Function for granter
     function grant_data_access( 
             address main_contract_addr,
             address requester_contract_addr, 
